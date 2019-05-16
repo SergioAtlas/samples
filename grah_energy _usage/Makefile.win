@@ -1,0 +1,39 @@
+# Project: Project1
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = battdata.o datadisplay.o powerdata.o controller.o $(RES)
+LINKOBJ  = battdata.o datadisplay.o powerdata.o controller.o $(RES)
+LIBS =  -L"Q:/bloodshd/lib" -L"U:/C++/group" -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32  -g3 
+INCS =  -I"Q:/bloodshd/include"  -I"U:/C++/group" 
+CXXINCS =  -I"Q:/bloodshd/lib/gcc/mingw32/3.4.2/include"  -I"Q:/bloodshd/include/c++/3.4.2/backward"  -I"Q:/bloodshd/include/c++/3.4.2/mingw32"  -I"Q:/bloodshd/include/c++/3.4.2"  -I"Q:/bloodshd/include"  -I"U:/C++/group" 
+BIN  = Project1.exe
+CXXFLAGS = $(CXXINCS)   -g3
+CFLAGS = $(INCS)   -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before Project1.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "Project1.exe" $(LIBS)
+
+battdata.o: battdata.cpp
+	$(CPP) -c battdata.cpp -o battdata.o $(CXXFLAGS)
+
+datadisplay.o: datadisplay.cpp
+	$(CPP) -c datadisplay.cpp -o datadisplay.o $(CXXFLAGS)
+
+powerdata.o: powerdata.cpp
+	$(CPP) -c powerdata.cpp -o powerdata.o $(CXXFLAGS)
+
+controller.o: controller.cpp
+	$(CPP) -c controller.cpp -o controller.o $(CXXFLAGS)
